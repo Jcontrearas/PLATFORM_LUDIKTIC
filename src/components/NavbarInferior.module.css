@@ -1,0 +1,93 @@
+.barraInferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--alto-navbar-bottom);
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-borde);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 var(--espacio-sm);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 768px) {
+  .barraInferior {
+    display: none; /* Ocultar en computadores */
+  }
+}
+
+.enlace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--color-texto-suave);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  transition: all var(--transicion-rapida);
+  min-width: 54px;
+  padding: 6px 0;
+}
+
+.enlace:hover {
+  color: var(--color-texto);
+}
+
+.activo {
+  color: #38BDF8;
+}
+
+.activo svg {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.6));
+}
+
+/* Botón central elevado para escanear QR */
+.botonCentral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  top: -14px;
+}
+
+.circuloCentral {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radio-full);
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #EC4899 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5), 0 0 0 4px var(--color-fondo);
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.botonCentral:hover .circuloCentral,
+.botonCentral:active .circuloCentral {
+  transform: scale(1.08);
+  box-shadow: 0 8px 26px rgba(124, 58, 237, 0.7), 0 0 0 4px var(--color-fondo);
+}
+
+.centralActivo .circuloCentral {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #F43F5E 100%);
+  box-shadow: 0 8px 28px rgba(236, 72, 153, 0.6), 0 0 0 4px var(--color-fondo);
+}
+
+.textoCentral {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  margin-top: 4px;
+}

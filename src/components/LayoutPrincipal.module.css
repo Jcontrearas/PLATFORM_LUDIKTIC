@@ -1,0 +1,31 @@
+.contenedorApp {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+}
+
+.areaContenido {
+  flex: 1;
+  padding: var(--espacio-md);
+  padding-bottom: calc(var(--alto-navbar-bottom) + var(--espacio-lg)); /* Espacio para barra inferior en móvil */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .contenedorApp {
+    flex-direction: row;
+  }
+
+  .areaContenido {
+    margin-left: 260px; /* Margen para la barra lateral izquierda */
+    padding: var(--espacio-xl) var(--espacio-2xl);
+    padding-bottom: var(--espacio-2xl);
+  }
+}
+
+.limiteAncho {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}

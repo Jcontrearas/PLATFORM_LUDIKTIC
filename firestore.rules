@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Funciones auxiliares ──────────────────────────────────────────────────
+
+    // Verifica que el usuario tenga sesión activa
+    function estaAutenticado() {
+      return request.auth != null;
+    }
+
+    // Verifica que el usuario sea el propietario del documento
+    function esPropietario(uid) {
+      return request.auth.uid == uid;
+    }
+
+    // Verifica si el usuario tiene rol de docente (campo en su propio doc)
+    function esDocente() {
+      return estaAutenticado() &&
+        get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'docente';
+    }
+
+    // ── Colección: usuarios ───────────────────────────────────────────────────
+    match /usuarios/{uid} {
+      // Cualquier autenticado puede leer solo nombre, avatar, nivel y puntos
+      // (para tabla de clasificación). El propietario lee todo su perfil.
+      allow read: if estaAutenticado();
+
+      // Solo el propietario puede crear y actualizar su perfil
+      allow create: if estaAutenticado() && esPropietario(uid);
+
+      // Al actualizar, no se puede cambiar el campo de puntos directamente
+      // (los puntos los actualiza solo la lógica de intentos, no el cliente)
+      allow update: if estaAutenticado() && esPropietario(uid) &&
+        !('puntosTotal' in request.resource.data.diff(resource.data).affectedKeys());
+
+      allow delete: if false;
+    }
+
+    // ── Colección: cursos ─────────────────────────────────────────────────────
+    match /cursos/{cursoId} {
+      // Cualquier autenticado puede leer la info del curso
+      allow read: if estaAutenticado();
+
+      // Solo el docente puede crear/editar cursos
+      allow write: if esDocente();
+    }
+
+    // ── Colección: retos ──────────────────────────────────────────────────────
+    match /retos/{retoId} {
+      // Cualquier autenticado puede leer retos activos
+      allow read: if estaAutenticado() && resource.data.activo == true;
+
+      // Solo el docente puede crear/editar/desactivar retos
+      allow write: if esDocente();
+    }
+
+    // ── Colección: intentos ───────────────────────────────────────────────────
+    match /intentos/{intentoId} {
+      // El docente puede leer todos los intentos
+      // El estudiante solo puede leer sus propios intentos
+      allow read: if estaAutenticado() && (
+        esDocente() ||
+        resource.data.uid == request.auth.uid
+      );
+
+      // Cualquier autenticado puede crear un intento propio
+      allow create: if estaAutenticado() &&
+        request.resource.data.uid == request.auth.uid;
+
+      // No se permite modificar ni borrar intentos
+      allow update, delete: if false;
+    }
+  }
+}

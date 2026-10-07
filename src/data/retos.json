@@ -1,0 +1,441 @@
+[
+  {
+    "id": "MAT-001",
+    "area": "matematicas",
+    "titulo": "La tienda escolar",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["M", "T"],
+    "contextoPersonaje": "tienda",
+    "historia": "Doña Rosa tiene la tienda del colegio y quiere darte un descuento del 15% en tu compra. Pero su calculadora se quedó sin pila y necesita que la ayudes con un programa.",
+    "instruccion": "Escribe una función llamada calcular_total(precio) que reciba el precio original y retorne el precio con el 15% de descuento.",
+    "ejemplo": "Entrada: 5000\nSalida: 4250.0",
+    "plantilla": "def calcular_total(precio):\n    # Aquí va tu código\n    # Recuerda: el descuento es del 15%\n    pass\n\n# Prueba tu función\nprint(calcular_total(5000))",
+    "pruebas": [
+      { "entrada": "5000", "salida": "4250.0", "oculta": false },
+      { "entrada": "10000", "salida": "8500.0", "oculta": false },
+      { "entrada": "3000", "salida": "2550.0", "oculta": true },
+      { "entrada": "7500", "salida": "6375.0", "oculta": true }
+    ],
+    "pistas": [
+      "El descuento del 15% significa que pagas el 85% del precio original.",
+      "Para calcular el 85%, multiplica el precio por 0.85.",
+      "Ejemplo: si el precio es 5000, el resultado es 5000 * 0.85 = 4250"
+    ],
+    "activo": true
+  },
+  {
+    "id": "MAT-002",
+    "area": "matematicas",
+    "titulo": "El cambio exacto",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["M", "T"],
+    "contextoPersonaje": "tienda",
+    "historia": "Compraste algo en la tienda y pagaste con un billete. El vendedor necesita darte el cambio exacto, pero hay mucha fila y necesita hacerlo rápido.",
+    "instruccion": "Escribe una función llamada calcular_cambio(precio, pago) que reciba el precio del producto y el valor pagado, y retorne el cambio que se debe devolver.",
+    "ejemplo": "Entrada: 3500, 5000\nSalida: 1500",
+    "plantilla": "def calcular_cambio(precio, pago):\n    # Calcula cuánto dinero se debe devolver\n    pass\n\nprint(calcular_cambio(3500, 5000))",
+    "pruebas": [
+      { "entrada": "3500, 5000", "salida": "1500", "oculta": false },
+      { "entrada": "1200, 2000", "salida": "800", "oculta": false },
+      { "entrada": "4800, 10000", "salida": "5200", "oculta": true }
+    ],
+    "pistas": [
+      "El cambio es la diferencia entre lo que pagaste y el precio.",
+      "Usa la operación de resta.",
+      "cambio = pago - precio"
+    ],
+    "activo": true
+  },
+  {
+    "id": "MAT-003",
+    "area": "matematicas",
+    "titulo": "Ahorro para el paseo",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["M", "T"],
+    "contextoPersonaje": "paseo",
+    "historia": "El paseo de grado cuesta $150.000. Tú puedes ahorrar $12.500 cada semana de tu mesada. ¿Cuántas semanas necesitas para tener el dinero completo?",
+    "instruccion": "Escribe una función llamada semanas_para_ahorrar(meta, ahorro_semanal) que retorne el número de semanas necesarias para alcanzar la meta de ahorro.",
+    "ejemplo": "Entrada: 150000, 12500\nSalida: 12",
+    "plantilla": "import math\n\ndef semanas_para_ahorrar(meta, ahorro_semanal):\n    # ¿Cuántas semanas necesitas?\n    # Pista: usa math.ceil() para redondear hacia arriba\n    pass\n\nprint(semanas_para_ahorrar(150000, 12500))",
+    "pruebas": [
+      { "entrada": "150000, 12500", "salida": "12", "oculta": false },
+      { "entrada": "200000, 30000", "salida": "7", "oculta": false },
+      { "entrada": "75000, 8000", "salida": "10", "oculta": true },
+      { "entrada": "500000, 50000", "salida": "10", "oculta": true }
+    ],
+    "pistas": [
+      "Necesitas dividir la meta entre el ahorro semanal.",
+      "Pero si la división no es exacta, debes redondear hacia arriba (no puedes ahorrar medio sueldo).",
+      "Usa math.ceil(meta / ahorro_semanal) para redondear siempre hacia arriba."
+    ],
+    "activo": true
+  },
+  {
+    "id": "MAT-004",
+    "area": "matematicas",
+    "titulo": "El marcador del partido",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["M", "T", "A"],
+    "contextoPersonaje": "deporte",
+    "historia": "El equipo de fútbol del colegio anotó varios goles en los últimos partidos. El entrenador quiere saber el promedio de goles por partido y si el equipo está ganando más de lo que pierde.",
+    "instruccion": "Escribe una función llamada analizar_partidos(goles) que reciba una lista de goles por partido y retorne una tupla con: (promedio, máximo, mínimo).",
+    "ejemplo": "Entrada: [3, 1, 4, 2, 5]\nSalida: (3.0, 5, 1)",
+    "plantilla": "def analizar_partidos(goles):\n    # Calcula el promedio, el máximo y el mínimo\n    promedio = 0  # Tu código aquí\n    maximo = 0    # Tu código aquí\n    minimo = 0    # Tu código aquí\n    return (promedio, maximo, minimo)\n\nprint(analizar_partidos([3, 1, 4, 2, 5]))",
+    "pruebas": [
+      { "entrada": "[3, 1, 4, 2, 5]", "salida": "(3.0, 5, 1)", "oculta": false },
+      { "entrada": "[2, 2, 2]", "salida": "(2.0, 2, 2)", "oculta": false },
+      { "entrada": "[0, 5, 3, 1]", "salida": "(2.25, 5, 0)", "oculta": true }
+    ],
+    "pistas": [
+      "Para el promedio, suma todos los goles y divide por la cantidad de partidos.",
+      "Puedes usar las funciones sum(), max() y min() de Python.",
+      "El promedio es: sum(goles) / len(goles)"
+    ],
+    "activo": true
+  },
+  {
+    "id": "MAT-005",
+    "area": "matematicas",
+    "titulo": "Estadística del curso",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["M", "T", "I"],
+    "contextoPersonaje": "colegio",
+    "historia": "El profesor de matemáticas tiene las notas del examen final y necesita un reporte completo: promedio, nota más alta, nota más baja y cuántos estudiantes aprobaron (nota >= 3.0).",
+    "instruccion": "Escribe una función llamada reporte_notas(notas) que reciba una lista de notas y retorne un diccionario con: promedio, mayor, menor y aprobados.",
+    "ejemplo": "Entrada: [4.5, 2.8, 3.2, 5.0, 1.5, 3.8]\nSalida: {'promedio': 3.47, 'mayor': 5.0, 'menor': 1.5, 'aprobados': 4}",
+    "plantilla": "def reporte_notas(notas):\n    # Construye el reporte de notas\n    promedio = 0\n    mayor = 0\n    menor = 0\n    aprobados = 0\n    \n    return {\n        'promedio': round(promedio, 2),\n        'mayor': mayor,\n        'menor': menor,\n        'aprobados': aprobados\n    }\n\nprint(reporte_notas([4.5, 2.8, 3.2, 5.0, 1.5, 3.8]))",
+    "pruebas": [
+      { "entrada": "[4.5, 2.8, 3.2, 5.0, 1.5, 3.8]", "salida": "{'promedio': 3.47, 'mayor': 5.0, 'menor': 1.5, 'aprobados': 4}", "oculta": false },
+      { "entrada": "[3.0, 3.0, 3.0]", "salida": "{'promedio': 3.0, 'mayor': 3.0, 'menor': 3.0, 'aprobados': 3}", "oculta": false },
+      { "entrada": "[1.0, 2.0, 2.5]", "salida": "{'promedio': 1.83, 'mayor': 2.5, 'menor': 1.0, 'aprobados': 0}", "oculta": true }
+    ],
+    "pistas": [
+      "Usa sum(notas) / len(notas) para el promedio y round() para redondear a 2 decimales.",
+      "Puedes usar max() y min() para el mayor y el menor.",
+      "Para contar los aprobados, recorre la lista con un for y cuenta los que tengan nota >= 3.0."
+    ],
+    "activo": true
+  },
+  {
+    "id": "MAT-006",
+    "area": "matematicas",
+    "titulo": "La huerta escolar",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["M", "I", "E"],
+    "contextoPersonaje": "naturaleza",
+    "historia": "El colegio va a construir una huerta en el patio. El rector necesita saber cuántas plantas caben en el espacio disponible y cuánta tierra (en bolsas) se necesita comprar.",
+    "instruccion": "Escribe una función llamada planear_huerta(largo, ancho, espacio_planta, tierra_por_planta) que retorne una tupla con (cantidad_plantas, bolsas_tierra).",
+    "ejemplo": "Entrada: 6, 4, 0.5, 2\nSalida: (192, 384)",
+    "plantilla": "def planear_huerta(largo, ancho, espacio_planta, tierra_por_planta):\n    # Área total de la huerta en m²\n    area = 0\n    # Área que ocupa cada planta (cuadrado)\n    area_planta = 0\n    # Cantidad de plantas\n    plantas = 0\n    # Bolsas de tierra necesarias\n    bolsas = 0\n    return (plantas, bolsas)\n\nprint(planear_huerta(6, 4, 0.5, 2))",
+    "pruebas": [
+      { "entrada": "6, 4, 0.5, 2", "salida": "(192, 384)", "oculta": false },
+      { "entrada": "3, 3, 1, 3", "salida": "(9, 27)", "oculta": false },
+      { "entrada": "10, 5, 0.25, 1", "salida": "(800, 800)", "oculta": true }
+    ],
+    "pistas": [
+      "Primero calcula el área total: largo * ancho.",
+      "El área por planta es espacio_planta * espacio_planta (es un cuadrado).",
+      "Las plantas caben: area_total / area_por_planta. Multiplica por tierra_por_planta para las bolsas."
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-001",
+    "area": "ciencias",
+    "titulo": "El termómetro digital",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["C", "T", "M"],
+    "contextoPersonaje": "laboratorio",
+    "historia": "La profesora de ciencias compró un termómetro digital que muestra la temperatura en Celsius, pero el libro de texto de física que usan en clase da los datos en Fahrenheit. ¡Necesitas un conversor!",
+    "instruccion": "Escribe una función llamada celsius_a_fahrenheit(celsius) que convierta grados Celsius a Fahrenheit.",
+    "ejemplo": "Entrada: 100\nSalida: 212.0",
+    "plantilla": "def celsius_a_fahrenheit(celsius):\n    # Fórmula: F = (C × 9/5) + 32\n    pass\n\nprint(celsius_a_fahrenheit(100))",
+    "pruebas": [
+      { "entrada": "100", "salida": "212.0", "oculta": false },
+      { "entrada": "0", "salida": "32.0", "oculta": false },
+      { "entrada": "37", "salida": "98.6", "oculta": true },
+      { "entrada": "-40", "salida": "-40.0", "oculta": true }
+    ],
+    "pistas": [
+      "La fórmula para convertir es: Fahrenheit = (Celsius × 9/5) + 32",
+      "Primero multiplica por 9, luego divide por 5, y finalmente suma 32.",
+      "En Python: fahrenheit = (celsius * 9/5) + 32"
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-002",
+    "area": "ciencias",
+    "titulo": "El índice de masa corporal",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["C", "M", "T"],
+    "contextoPersonaje": "cuerpoHumano",
+    "historia": "La profesora de educación física quiere calcular el índice de masa corporal (IMC) de los estudiantes para el registro médico del colegio. El IMC ayuda a saber si una persona tiene un peso saludable.",
+    "instruccion": "Escribe una función llamada calcular_imc(peso, estatura) que reciba el peso en kg y la estatura en metros, y retorne el IMC redondeado a 1 decimal.",
+    "ejemplo": "Entrada: 60, 1.65\nSalida: 22.0",
+    "plantilla": "def calcular_imc(peso, estatura):\n    # Fórmula: IMC = peso / estatura²\n    pass\n\nprint(calcular_imc(60, 1.65))",
+    "pruebas": [
+      { "entrada": "60, 1.65", "salida": "22.0", "oculta": false },
+      { "entrada": "80, 1.75", "salida": "26.1", "oculta": false },
+      { "entrada": "45, 1.55", "salida": "18.7", "oculta": true }
+    ],
+    "pistas": [
+      "El IMC se calcula dividiendo el peso entre la estatura al cuadrado.",
+      "La estatura al cuadrado es: estatura ** 2 (o estatura * estatura).",
+      "Usa round(resultado, 1) para redondear a 1 decimal."
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-003",
+    "area": "ciencias",
+    "titulo": "El ciclista",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["C", "M", "T"],
+    "contextoPersonaje": "deporte",
+    "historia": "Tu amigo participa en una carrera de ciclismo. Recorrió una distancia en cierto tiempo. Necesitas calcular su velocidad media y decirle si superó el límite de velocidad de la pista (25 km/h).",
+    "instruccion": "Escribe una función llamada analizar_ciclista(distancia_km, tiempo_horas) que retorne una tupla con (velocidad_media, supero_limite) donde supero_limite es True o False.",
+    "ejemplo": "Entrada: 50, 1.5\nSalida: (33.33, True)",
+    "plantilla": "def analizar_ciclista(distancia_km, tiempo_horas):\n    LIMITE_VELOCIDAD = 25  # km/h\n    velocidad = 0  # Tu código aquí\n    supero = False  # Tu código aquí\n    return (round(velocidad, 2), supero)\n\nprint(analizar_ciclista(50, 1.5))",
+    "pruebas": [
+      { "entrada": "50, 1.5", "salida": "(33.33, True)", "oculta": false },
+      { "entrada": "20, 1", "salida": "(20.0, False)", "oculta": false },
+      { "entrada": "100, 4", "salida": "(25.0, False)", "oculta": true }
+    ],
+    "pistas": [
+      "Velocidad = distancia / tiempo.",
+      "Para saber si superó el límite, compara la velocidad con 25 usando >.",
+      "supero = velocidad > LIMITE_VELOCIDAD"
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-004",
+    "area": "ciencias",
+    "titulo": "La cadena alimenticia",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["C", "T"],
+    "contextoPersonaje": "naturaleza",
+    "historia": "En la clase de ciencias están estudiando ecosistemas. La profesora tiene una lista de animales y quiere clasificarlos según su posición en la cadena alimenticia según su dieta.",
+    "instruccion": "Escribe una función llamada clasificar_animal(dieta) que reciba el tipo de dieta ('herbivoro', 'carnivoro', 'omnivoro') y retorne su nivel trófico ('Productor secundario', 'Consumidor primario', 'Consumidor secundario', 'Consumidor terciario').",
+    "ejemplo": "Entrada: 'herbivoro'\nSalida: 'Consumidor primario'",
+    "plantilla": "def clasificar_animal(dieta):\n    # Clasifica el animal según su dieta\n    # herbivoro -> Consumidor primario\n    # carnivoro -> Consumidor secundario\n    # omnivoro  -> Consumidor terciario\n    pass\n\nprint(clasificar_animal('herbivoro'))",
+    "pruebas": [
+      { "entrada": "'herbivoro'", "salida": "'Consumidor primario'", "oculta": false },
+      { "entrada": "'carnivoro'", "salida": "'Consumidor secundario'", "oculta": false },
+      { "entrada": "'omnivoro'", "salida": "'Consumidor terciario'", "oculta": true }
+    ],
+    "pistas": [
+      "Puedes usar if / elif / else para comparar la dieta.",
+      "Recuerda que las cadenas de texto se comparan con ==.",
+      "if dieta == 'herbivoro': return 'Consumidor primario'"
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-005",
+    "area": "ciencias",
+    "titulo": "Consumo de agua en casa",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["C", "M", "T", "I"],
+    "contextoPersonaje": "naturaleza",
+    "historia": "La ONU dice que cada persona debería usar máximo 50 litros de agua al día. Tu familia quiere saber si su consumo mensual está dentro de lo recomendado y cómo clasificarlo.",
+    "instruccion": "Escribe una función llamada analizar_consumo(litros_diarios, personas) que calcule el consumo mensual total y lo clasifique como 'bajo' (< 40 L/persona/día), 'normal' (40-60 L) o 'alto' (> 60 L).",
+    "ejemplo": "Entrada: 45, 4\nSalida: {'mensual_total': 5400, 'por_persona': 45, 'clasificacion': 'normal'}",
+    "plantilla": "def analizar_consumo(litros_diarios, personas):\n    DIAS_MES = 30\n    mensual = litros_diarios * DIAS_MES\n    por_persona = litros_diarios / personas\n    clasificacion = ''\n    # Clasifica según por_persona\n    return {\n        'mensual_total': mensual,\n        'por_persona': round(por_persona, 1),\n        'clasificacion': clasificacion\n    }\n\nprint(analizar_consumo(45, 4))",
+    "pruebas": [
+      { "entrada": "45, 4", "salida": "{'mensual_total': 1350, 'por_persona': 11.2, 'clasificacion': 'bajo'}", "oculta": false },
+      { "entrada": "200, 4", "salida": "{'mensual_total': 6000, 'por_persona': 50.0, 'clasificacion': 'normal'}", "oculta": false },
+      { "entrada": "300, 3", "salida": "{'mensual_total': 9000, 'por_persona': 100.0, 'clasificacion': 'alto'}", "oculta": true }
+    ],
+    "pistas": [
+      "El consumo mensual es: litros_diarios * 30.",
+      "El consumo por persona es: litros_diarios / personas.",
+      "Clasifica según por_persona: < 40 = bajo, entre 40 y 60 = normal, > 60 = alto."
+    ],
+    "activo": true
+  },
+  {
+    "id": "CIE-006",
+    "area": "ciencias",
+    "titulo": "Las notas musicales",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["C", "M", "T", "A"],
+    "contextoPersonaje": "musica",
+    "historia": "¿Sabías que los sonidos son vibraciones? Cada nota musical tiene una frecuencia específica medida en Hz. La nota La (A4) tiene 440 Hz. Cada octava hacia arriba duplica la frecuencia.",
+    "instruccion": "Escribe una función llamada frecuencia_nota(octava) que reciba el número de octava (4 = estándar) y retorne la frecuencia del La en esa octava.",
+    "ejemplo": "Entrada: 4\nSalida: 440.0\nEntrada: 5\nSalida: 880.0",
+    "plantilla": "def frecuencia_nota(octava):\n    FRECUENCIA_BASE = 440.0  # La en octava 4\n    OCTAVA_BASE = 4\n    # Cada octava sube duplica la frecuencia\n    # Cada octava baja la reduce a la mitad\n    pass\n\nprint(frecuencia_nota(4))\nprint(frecuencia_nota(5))",
+    "pruebas": [
+      { "entrada": "4", "salida": "440.0", "oculta": false },
+      { "entrada": "5", "salida": "880.0", "oculta": false },
+      { "entrada": "3", "salida": "220.0", "oculta": true },
+      { "entrada": "6", "salida": "1760.0", "oculta": true }
+    ],
+    "pistas": [
+      "La diferencia de octavas es: octava - 4.",
+      "Para subir una octava se multiplica por 2; para bajar, se divide por 2.",
+      "Usa potencias: frecuencia = 440.0 * (2 ** (octava - 4))"
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-001",
+    "area": "informatica",
+    "titulo": "Contraseña segura",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["T", "M"],
+    "contextoPersonaje": "computador",
+    "historia": "En la clase de informática aprendiste que una contraseña segura debe tener al menos 8 caracteres. Tu profesor quiere que hagas un verificador para que los estudiantes sepan si su contraseña es suficientemente segura.",
+    "instruccion": "Escribe una función llamada es_segura(contrasena) que retorne True si la contraseña tiene 8 o más caracteres, o False si tiene menos.",
+    "ejemplo": "Entrada: 'abc123'\nSalida: False\nEntrada: 'miClave2024'\nSalida: True",
+    "plantilla": "def es_segura(contrasena):\n    # Verifica si la contraseña tiene al menos 8 caracteres\n    pass\n\nprint(es_segura('abc123'))\nprint(es_segura('miClave2024'))",
+    "pruebas": [
+      { "entrada": "'abc123'", "salida": "False", "oculta": false },
+      { "entrada": "'miClave2024'", "salida": "True", "oculta": false },
+      { "entrada": "'12345678'", "salida": "True", "oculta": true },
+      { "entrada": "'corta'", "salida": "False", "oculta": true }
+    ],
+    "pistas": [
+      "Puedes saber cuántos caracteres tiene un texto con len().",
+      "len('hola') da como resultado 4.",
+      "Retorna True si len(contrasena) >= 8, de lo contrario False."
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-002",
+    "area": "informatica",
+    "titulo": "El patrón de estrellas",
+    "nivel": 1,
+    "puntos": 10,
+    "steam": ["T", "A", "M"],
+    "contextoPersonaje": "computador",
+    "historia": "En arte digital, los patrones se crean con código. Tu reto es generar un triángulo de estrellas en la consola. Este tipo de ejercicio es muy común para aprender a usar ciclos.",
+    "instruccion": "Escribe una función llamada triangulo_estrellas(n) que imprima un triángulo de n filas hecho con asteriscos (*).",
+    "ejemplo": "Entrada: 4\nSalida:\n*\n**\n***\n****",
+    "plantilla": "def triangulo_estrellas(n):\n    # Usa un ciclo for para imprimir cada fila\n    for i in range(1, n + 1):\n        pass  # ¿Qué va aquí?\n\ntriangulo_estrellas(4)",
+    "pruebas": [
+      { "entrada": "4", "salida": "*\n**\n***\n****", "oculta": false },
+      { "entrada": "1", "salida": "*", "oculta": false },
+      { "entrada": "3", "salida": "*\n**\n***", "oculta": true }
+    ],
+    "pistas": [
+      "En cada iteración del ciclo, i representa cuántas estrellas hay en esa fila.",
+      "Puedes repetir un caracter con: '*' * i",
+      "print('*' * i) imprimirá i estrellas en la fila i."
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-003",
+    "area": "informatica",
+    "titulo": "Mensaje secreto",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["T", "M", "I"],
+    "contextoPersonaje": "computador",
+    "historia": "Julio César, el famoso general romano, cifraba sus mensajes militares desplazando cada letra del alfabeto 3 posiciones. ¡Ahora tú vas a crear ese mismo cifrado para proteger tus mensajes!",
+    "instruccion": "Escribe una función llamada cifrar_cesar(texto, desplazamiento) que cifre el texto desplazando cada letra el número de posiciones indicado. Las letras mayúsculas y minúsculas se cifran por separado. Los espacios y números no se modifican.",
+    "ejemplo": "Entrada: 'Hola Mundo', 3\nSalida: 'Krod Pxqgr'",
+    "plantilla": "def cifrar_cesar(texto, desplazamiento):\n    resultado = ''\n    for letra in texto:\n        if letra.isalpha():\n            # Detecta si es mayúscula o minúscula\n            base = ord('A') if letra.isupper() else ord('a')\n            # Tu código aquí: desplaza la letra\n            resultado += letra  # Reemplaza esto\n        else:\n            resultado += letra\n    return resultado\n\nprint(cifrar_cesar('Hola Mundo', 3))",
+    "pruebas": [
+      { "entrada": "'Hola Mundo', 3", "salida": "'Krod Pxqgr'", "oculta": false },
+      { "entrada": "'abc', 1", "salida": "'bcd'", "oculta": false },
+      { "entrada": "'XYZ', 3", "salida": "'ABC'", "oculta": true },
+      { "entrada": "'Python 3', 13", "salida": "'Clguba 3'", "oculta": true }
+    ],
+    "pistas": [
+      "ord('A') da el código ASCII de una letra. chr() convierte un número de vuelta a letra.",
+      "Para desplazar: nueva_posicion = (ord(letra) - base + desplazamiento) % 26",
+      "La nueva letra es: chr(nueva_posicion + base)"
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-004",
+    "area": "informatica",
+    "titulo": "El contador de palabras",
+    "nivel": 2,
+    "puntos": 25,
+    "steam": ["T", "I"],
+    "contextoPersonaje": "computador",
+    "historia": "Estás escribiendo una reseña de tu película favorita para el blog del colegio. El editor te pide que no superes las 100 palabras. Necesitas un contador automático.",
+    "instruccion": "Escribe una función llamada analizar_texto(texto) que retorne un diccionario con: palabras (cantidad), caracteres (sin espacios) y la palabra más larga.",
+    "ejemplo": "Entrada: 'El sol brilla hoy'\nSalida: {'palabras': 4, 'caracteres': 14, 'mas_larga': 'brilla'}",
+    "plantilla": "def analizar_texto(texto):\n    lista_palabras = texto.split()\n    palabras = len(lista_palabras)\n    caracteres = len(texto.replace(' ', ''))\n    mas_larga = ''\n    # Encuentra la palabra más larga\n    \n    return {\n        'palabras': palabras,\n        'caracteres': caracteres,\n        'mas_larga': mas_larga\n    }\n\nprint(analizar_texto('El sol brilla hoy'))",
+    "pruebas": [
+      { "entrada": "'El sol brilla hoy'", "salida": "{'palabras': 4, 'caracteres': 14, 'mas_larga': 'brilla'}", "oculta": false },
+      { "entrada": "'Hola'", "salida": "{'palabras': 1, 'caracteres': 4, 'mas_larga': 'Hola'}", "oculta": false },
+      { "entrada": "'Python es genial'", "salida": "{'palabras': 3, 'caracteres': 14, 'mas_larga': 'Python'}", "oculta": true }
+    ],
+    "pistas": [
+      "texto.split() divide el texto en una lista de palabras.",
+      "Para encontrar la más larga, usa max(lista_palabras, key=len).",
+      "texto.replace(' ', '') elimina todos los espacios del texto."
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-005",
+    "area": "informatica",
+    "titulo": "Semáforo inteligente",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["T", "I", "E", "M"],
+    "contextoPersonaje": "ciudad",
+    "historia": "En la calle principal del barrio hay un semáforo que tarda mucho en cambiar aunque no haya carros. El alcalde quiere uno inteligente que ajuste su tiempo según la cantidad de carros en la fila.",
+    "instruccion": "Escribe una función llamada tiempo_semaforo(carros_en_fila) que retorne el tiempo en verde en segundos: 0-5 carros: 15s, 6-15 carros: 30s, 16-30 carros: 45s, más de 30: 60s.",
+    "ejemplo": "Entrada: 8\nSalida: 30\nEntrada: 35\nSalida: 60",
+    "plantilla": "def tiempo_semaforo(carros_en_fila):\n    # Determina el tiempo en verde según la cantidad de carros\n    if carros_en_fila <= 5:\n        pass\n    elif carros_en_fila <= 15:\n        pass\n    # Continúa el patrón...\n\nprint(tiempo_semaforo(8))\nprint(tiempo_semaforo(35))",
+    "pruebas": [
+      { "entrada": "3", "salida": "15", "oculta": false },
+      { "entrada": "8", "salida": "30", "oculta": false },
+      { "entrada": "20", "salida": "45", "oculta": true },
+      { "entrada": "35", "salida": "60", "oculta": true }
+    ],
+    "pistas": [
+      "Usa if / elif / else para evaluar los rangos de carros.",
+      "El primer rango es 0 a 5 carros: retorna 15.",
+      "No olvides el caso de más de 30 carros al final."
+    ],
+    "activo": true
+  },
+  {
+    "id": "INF-006",
+    "area": "informatica",
+    "titulo": "El organizador de notas",
+    "nivel": 3,
+    "puntos": 50,
+    "steam": ["T", "I", "M"],
+    "contextoPersonaje": "colegio",
+    "historia": "El sistema del colegio guarda las notas de los estudiantes en una lista desordenada. El coordinador necesita que las organices de mayor a menor sin usar la función sort() de Python (para entender cómo funciona internamente).",
+    "instruccion": "Escribe una función llamada ordenar_notas(notas) que ordene la lista de mayor a menor usando el algoritmo de burbuja (Bubble Sort) y la retorne.",
+    "ejemplo": "Entrada: [3.5, 4.8, 2.1, 5.0, 3.0]\nSalida: [5.0, 4.8, 3.5, 3.0, 2.1]",
+    "plantilla": "def ordenar_notas(notas):\n    # Copia la lista para no modificar la original\n    lista = notas[:]\n    n = len(lista)\n    \n    # Algoritmo de burbuja\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            # Si el elemento actual es menor que el siguiente, intercámbialos\n            if lista[j] < lista[j + 1]:\n                pass  # Tu código aquí\n    \n    return lista\n\nprint(ordenar_notas([3.5, 4.8, 2.1, 5.0, 3.0]))",
+    "pruebas": [
+      { "entrada": "[3.5, 4.8, 2.1, 5.0, 3.0]", "salida": "[5.0, 4.8, 3.5, 3.0, 2.1]", "oculta": false },
+      { "entrada": "[1, 2, 3]", "salida": "[3, 2, 1]", "oculta": false },
+      { "entrada": "[5.0, 5.0, 3.0]", "salida": "[5.0, 5.0, 3.0]", "oculta": true }
+    ],
+    "pistas": [
+      "El intercambio en Python se hace así: lista[j], lista[j+1] = lista[j+1], lista[j]",
+      "El algoritmo de burbuja compara pares de elementos adyacentes.",
+      "Si lista[j] < lista[j+1], intercámbialos para ordenar de mayor a menor."
+    ],
+    "activo": true
+  }
+]

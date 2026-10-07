@@ -1,0 +1,356 @@
+.contenedorEscaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-lg);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bitInstruccion {
+  display: flex;
+  justify-content: center;
+}
+
+.tarjetaEscaner {
+  background: var(--color-fondo-card);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-xl);
+  padding: var(--espacio-lg);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  box-shadow: var(--sombra-card);
+}
+
+.encabezado {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titulo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.subtitulo {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  line-height: 1.4;
+}
+
+/* Notificación de Éxito */
+.cajaExito {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md);
+  color: #4ADE80;
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-md);
+  animation: aparecer 0.3s ease-out;
+}
+
+.cajaExito strong {
+  font-size: 0.95rem;
+}
+
+.cajaExito p {
+  font-size: 0.85rem;
+  color: var(--color-texto);
+  margin: 2px 0 0 0;
+}
+
+/* Área del visor de cámara */
+.areaVisor {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 360px;
+  margin: 0 auto;
+  border-radius: var(--radio-xl);
+  background: #0B0F19;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elementoCamara {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+.elementoCamara video {
+  object-fit: cover !important;
+  border-radius: var(--radio-xl);
+}
+
+/* Marco guía sobre la cámara */
+.marcoGuia {
+  position: absolute;
+  inset: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.esquina {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #38BDF8;
+  border-style: solid;
+}
+
+.esquinaTL { top: 0; left: 0; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
+.esquinaTR { top: 0; right: 0; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
+.esquinaBL { bottom: 0; left: 0; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
+.esquinaBR { bottom: 0; right: 0; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
+
+.lineaEscaneo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38BDF8, #7C3AED, transparent);
+  box-shadow: 0 0 12px #38BDF8;
+  animation: barrido 2s ease-in-out infinite alternate;
+}
+
+@keyframes barrido {
+  0% { top: 5%; }
+  100% { top: 95%; }
+}
+
+/* Placeholder cuando la cámara no está activa */
+.placeholderCamara {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--espacio-md);
+  padding: var(--espacio-lg);
+  color: var(--color-texto-suave);
+}
+
+.iconoCamaraGrande {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radio-full);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38BDF8;
+}
+
+.placeholderCamara p {
+  font-size: 0.85rem;
+  max-width: 240px;
+  margin: 0;
+}
+
+.botonIniciarCamara {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: var(--radio-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.botonIniciarCamara:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
+}
+
+/* Controles cuando la cámara está activa */
+.controlesCamara {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-sm);
+}
+
+.btnDetenerCamara {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #F87171;
+  padding: 8px 14px;
+  border-radius: var(--radio-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alertaErrorCamara {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-sm) var(--espacio-md);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacio-sm);
+  color: #FBBF24;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.alertaErrorCamara p {
+  margin: 0;
+}
+
+/* Divisor */
+.divisorO {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--color-texto-muy-suave);
+  font-size: 0.78rem;
+  margin: var(--espacio-xs) 0;
+}
+
+.divisorO::before,
+.divisorO::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.divisorO span {
+  padding: 0 var(--espacio-sm);
+}
+
+/* Formulario Manual */
+.formManual {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campoInputManual {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: 4px 6px 4px var(--espacio-sm);
+  gap: var(--espacio-sm);
+  transition: border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.campoInputManual:focus-within {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.iconoInput {
+  color: var(--color-texto-suave);
+  flex-shrink: 0;
+}
+
+.inputCodigo {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  font-family: var(--fuente-codigo);
+  font-weight: 600;
+  flex: 1;
+  text-transform: uppercase;
+}
+
+.btnDesbloquearManual {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #38BDF8;
+  color: #0F172A;
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radio-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--transicion-rapida);
+}
+
+.btnDesbloquearManual:hover {
+  background: #7DD3FC;
+}
+
+.errorTextoManual {
+  font-size: 0.78rem;
+  color: #F87171;
+  margin-left: 4px;
+}
+
+/* Tarjetas Demo Rápidas */
+.seccionTarjetasDemo {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-sm) var(--espacio-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: var(--espacio-xs);
+}
+
+.textoTarjetasDemo {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chipsCodigos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chipCodigo {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  font-family: var(--fuente-codigo);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: all var(--transicion-rapida);
+}
+
+.chipCodigo:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38BDF8;
+  color: #38BDF8;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

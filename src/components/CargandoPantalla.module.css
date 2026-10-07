@@ -1,0 +1,28 @@
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background: var(--color-fondo);
+}
+
+.animacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-lg);
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
+}
+
+.mensaje {
+  font-family: var(--fuente-titulo);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-texto-suave);
+  letter-spacing: 0.05em;
+}

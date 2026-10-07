@@ -1,0 +1,233 @@
+.pantallaLogin {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-md);
+  position: relative;
+  background: var(--color-fondo);
+  overflow-x: hidden;
+}
+
+.fondoGradiente {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(5, 150, 105, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(124, 58, 237, 0.35) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.tarjetaLogin {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-xl);
+  padding: var(--espacio-xl) var(--espacio-lg);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+}
+
+.contenedorBit {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.encabezado {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-xs);
+}
+
+.logoBadge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-md);
+  background: linear-gradient(135deg, #2563EB, #7C3AED, #059669);
+  color: #FFFFFF;
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
+  margin-bottom: 4px;
+}
+
+.titulo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #34D399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitulo {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+.cajaError {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-sm) var(--espacio-md);
+  color: #FCA5A5;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  margin-top: var(--espacio-xs);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.etiqueta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.input {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-sm) var(--espacio-md);
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.input:focus {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.botonEntrar {
+  margin-top: var(--espacio-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-sm);
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: var(--espacio-sm) var(--espacio-lg);
+  border-radius: var(--radio-md);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.botonEntrar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(124, 58, 237, 0.6);
+}
+
+.botonEntrar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pieFormulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-sm);
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  padding-top: var(--espacio-xs);
+  border-top: 1px solid var(--color-borde);
+}
+
+.enlaceRegistro {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #38BDF8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.enlaceRegistro:hover {
+  text-decoration: underline;
+}
+
+/* Sección de accesos rápidos para demostración */
+.seccionDemo {
+  margin-top: var(--espacio-xs);
+  padding: var(--espacio-sm);
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--radio-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-xs);
+}
+
+.textoDemo {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+  text-align: center;
+}
+
+.botonesDemo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-xs);
+}
+
+.btnDemoEstudiante,
+.btnDemoDocente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radio-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: background var(--transicion-rapida);
+}
+
+.btnDemoEstudiante {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60A5FA;
+  border: 1px solid rgba(37, 99, 235, 0.4);
+}
+
+.btnDemoEstudiante:hover {
+  background: rgba(37, 99, 235, 0.35);
+}
+
+.btnDemoDocente {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.btnDemoDocente:hover {
+  background: rgba(245, 158, 11, 0.35);
+}

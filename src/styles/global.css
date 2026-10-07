@@ -1,0 +1,126 @@
+/* ============================================================
+   ESTILOS GLOBALES - PLATAFORMA STEAM
+   ============================================================ */
+
+@import './variables.css';
+
+/* --- Reset y base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  min-height: 100dvh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accesibilidad: respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Tipografía --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-texto);
+}
+
+h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+h2 { font-size: clamp(1.375rem, 4vw, 1.875rem); }
+h3 { font-size: clamp(1.125rem, 3vw, 1.375rem); }
+h4 { font-size: 1.125rem; }
+
+p {
+  color: var(--color-texto-suave);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code, pre, .codigo {
+  font-family: var(--fuente-codigo);
+}
+
+/* --- Botones táctiles mínimo 44x44px (accesibilidad móvil) --- */
+button, [role="button"], a {
+  min-height: 44px;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: var(--fuente-texto);
+}
+
+input, textarea, select {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Scrollbar personalizada --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-borde);
+  border-radius: var(--radio-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-texto-muy-suave);
+}
+
+/* --- Selección de texto --- */
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: var(--color-texto);
+}
+
+/* --- Utilidades globales --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.area-matematicas { --color-area: var(--color-matematicas); --gradiente-area: var(--gradiente-matematicas); }
+.area-ciencias     { --color-area: var(--color-ciencias);    --gradiente-area: var(--gradiente-ciencias); }
+.area-informatica  { --color-area: var(--color-informatica); --gradiente-area: var(--gradiente-informatica); }
