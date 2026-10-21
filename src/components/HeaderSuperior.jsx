@@ -3,6 +3,7 @@ import { Sun, Moon, LogOut } from 'lucide-react'
 import { useAuth } from '../features/auth/ProveedorAuth'
 import { useTema } from '../features/tema/ProveedorTema'
 import { AVATARES } from '../data/avatares'
+import LogoLudiktic from './LogoLudiktic'
 import styles from './HeaderSuperior.module.css'
 
 export default function HeaderSuperior() {
@@ -13,10 +14,7 @@ export default function HeaderSuperior() {
 
   return (
     <header className={styles.headerMovil}>
-      <Link to="/" className={styles.marca}>
-        <div className={styles.logoBadge}>S</div>
-        <span className={styles.nombreApp}>STEAM</span>
-      </Link>
+      <LogoLudiktic tamano="sm" subtitulo="8°" />
 
       <div className={styles.acciones}>
         <div className={styles.nivelPill}>

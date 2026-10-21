@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../features/auth/ProveedorAuth'
 import { useTema } from '../features/tema/ProveedorTema'
 import { AVATARES } from '../data/avatares'
@@ -194,6 +195,23 @@ export default function Perfil() {
               <span>{modoOscuro ? 'Activar Claro' : 'Activar Oscuro'}</span>
             </button>
           </div>
+
+          {esDocente && (
+            <div className={styles.filaAjuste}>
+              <div>
+                <span className={styles.tituloAjuste}>Panel de Administración Docente</span>
+                <p className={styles.descAjuste}>Gestiona retos, genera flashcards con QR y exporta notas a CSV.</p>
+              </div>
+              <Link
+                to="/docente"
+                className={styles.botonCambiarTema}
+                style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)', color: '#FFFFFF', textDecoration: 'none' }}
+              >
+                <ShieldCheck size={18} />
+                <span>Abrir Panel</span>
+              </Link>
+            </div>
+          )}
 
           <div className={styles.filaAjuste}>
             <div>

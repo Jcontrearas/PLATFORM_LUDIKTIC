@@ -688,6 +688,92 @@
   color: #FCA5A5;
 }
 
+/* Banner de subida de nivel e insignias */
+.bannerSubidaNivel {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(245, 158, 11, 0.1));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radio-md);
+  padding: 10px 14px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.iconoSubidaNivel {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.textoSubidaNivel {
+  display: flex;
+  flex-direction: column;
+}
+
+.textoSubidaNivel span {
+  font-size: 0.72rem;
+  color: #FBBF24;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.textoSubidaNivel strong {
+  font-size: 0.95rem;
+  color: #FFFFFF;
+}
+
+.bannerNuevasInsignias {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: var(--radio-md);
+  padding: 10px 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.tituloNuevasInsignias {
+  font-size: 0.75rem;
+  color: #C084FC;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gridInsigniasGanadas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chipInsigniaGanada {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px 10px;
+  border-radius: var(--radio-sm);
+  font-size: 0.82rem;
+}
+
+.iconoInsigniaChip {
+  font-size: 1.2rem;
+}
+
+.chipInsigniaGanada strong {
+  color: #F8FAFC;
+  font-size: 0.85rem;
+}
+
+.chipInsigniaGanada span {
+  color: var(--color-texto-suave);
+  font-size: 0.74rem;
+}
+
 .accionesVictoria {
   display: flex;
   flex-direction: column;

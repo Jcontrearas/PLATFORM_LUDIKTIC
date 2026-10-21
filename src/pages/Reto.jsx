@@ -6,7 +6,8 @@ import confetti from 'canvas-confetti'
 import { useAuth } from '../features/auth/ProveedorAuth'
 import retosData from '../data/retos.json'
 import PersonajeBit from '../components/PersonajeBit'
-import { ejecutarEnWorker } from '../features/ejecucion/ejecutorPython'
+import { ejecutarEnWorker, precalentarPyodide } from '../features/ejecucion/ejecutorPython'
+import { calcularNivel, evaluarInsignias } from '../features/gamificacion/sistemaPuntos'
 import {
   Play,
   Send,
@@ -81,6 +82,11 @@ export default function Reto() {
     setMensajeBit(null)
   }, [reto.id, reto.plantilla])
 
+  // Precalentar motor de Python en segundo plano al abrir el reto
+  useEffect(() => {
+    precalentarPyodide()
+  }, [])
+
   // Desbloqueo automático al abrir por URL directa o escaneo de cámara nativa (Sección 8.3)
   useEffect(() => {
     if (perfil && reto?.id) {
@@ -114,7 +120,8 @@ export default function Reto() {
     const resultado = await ejecutarEnWorker({
       codigo,
       pruebas: [],
-      tipo: 'EJECUTAR'
+      tipo: 'EJECUTAR',
+      onProgreso: (msg) => setSalidaConsola(msg)
     })
 
     setEjecutando(false)
@@ -147,7 +154,8 @@ export default function Reto() {
     const resultado = await ejecutarEnWorker({
       codigo,
       pruebas: reto.pruebas,
-      tipo: 'EJECUTAR'
+      tipo: 'EJECUTAR',
+      onProgreso: (msg) => setSalidaConsola(msg)
     })
 
     setEjecutando(false)
@@ -197,6 +205,10 @@ export default function Reto() {
       const yaResuelto = perfil?.retosResueltos?.includes(reto.id)
       const puntosOtorgados = yaResuelto ? 0 : puntosGanados
 
+      let nuevasInsignias = []
+      let nuevoNivelInfo = null
+      let subioNivel = false
+
       if (!yaResuelto) {
         const nuevosResueltos = [...(perfil?.retosResueltos || []), reto.id]
         const nuevosPuntosTotal = (perfil?.puntosTotal || 0) + puntosOtorgados
@@ -209,10 +221,32 @@ export default function Reto() {
           [areaReto]: puntosAreaActual + puntosOtorgados
         }
 
+        nuevoNivelInfo = calcularNivel(nuevosPuntosTotal)
+        subioNivel = nuevoNivelInfo.nivel > (perfil?.nivel || 1)
+
+        const perfilTentativo = {
+          ...perfil,
+          retosResueltos: nuevosResueltos,
+          puntosTotal: nuevosPuntosTotal,
+          puntosPorArea: nuevoPuntosArea,
+          nivel: nuevoNivelInfo.nivel,
+          nombreNivel: nuevoNivelInfo.nombre,
+          logroImparable: nuevoIntento === 1 && pistasReveladas === 0
+        }
+
+        nuevasInsignias = evaluarInsignias(perfilTentativo)
+        const listaInsigniasActualizada = [
+          ...(perfil?.insignias || []),
+          ...nuevasInsignias.map(i => i.id)
+        ]
+
         actualizarPerfil({
           retosResueltos: nuevosResueltos,
           puntosTotal: nuevosPuntosTotal,
-          puntosPorArea: nuevoPuntosArea
+          puntosPorArea: nuevoPuntosArea,
+          nivel: nuevoNivelInfo.nivel,
+          nombreNivel: nuevoNivelInfo.nombre,
+          insignias: listaInsigniasActualizada
         })
       }
 
@@ -222,7 +256,11 @@ export default function Reto() {
         bonoPrimerIntento,
         bonoSinPistas,
         pistasUsadas: pistasReveladas,
-        totalPruebas: reto.pruebas.length
+        totalPruebas: reto.pruebas.length,
+        subioNivel,
+        nuevoNivel: nuevoNivelInfo?.nivel,
+        nuevoNombreNivel: nuevoNivelInfo?.nombre,
+        nuevasInsignias
       })
     } else {
       // Alguna prueba falló
@@ -248,8 +286,8 @@ export default function Reto() {
   const revelarPista = () => {
     if (pistasReveladas < reto.pistas.length) {
       setPistasReveladas(prev => prev + 1)
-      setEstadoBit('reposo')
-      setMensajeBit('¡Aquí tienes una pista! Recuerda que cada pista descuenta un pequeño porcentaje de puntos.')
+      setEstadoBit('pista')
+      setMensajeBit('💡 ¡Aquí tienes una pista! Recuerda que cada pista descuenta un pequeño porcentaje de puntos.')
     }
   }
 
@@ -305,7 +343,7 @@ export default function Reto() {
               estado={estadoBit}
               tamano="md"
               mensaje={mensajeBit || `¡Hola! Resolvamos juntos "${reto.titulo}". Lee con atención la historia.`}
-              accesorio={reto.contextoPersonaje}
+              contexto={reto.contextoPersonaje}
             />
           </div>
 
@@ -533,7 +571,12 @@ export default function Reto() {
         <div className={styles.overlayModal}>
           <div className={styles.modalVictoria}>
             <div className={styles.bitCelebracion}>
-              <PersonajeBit area={reto.area} estado="celebrando" tamano="md" />
+              <PersonajeBit
+                area={reto.area}
+                estado="celebrando"
+                tamano="md"
+                contexto={reto.contextoPersonaje}
+              />
             </div>
 
             <div className={styles.encabezadoVictoria}>
@@ -573,6 +616,35 @@ export default function Reto() {
                 </div>
               )}
             </div>
+
+            {/* Subida de Nivel */}
+            {modalVictoria.subioNivel && (
+              <div className={styles.bannerSubidaNivel}>
+                <div className={styles.iconoSubidaNivel}>🚀</div>
+                <div className={styles.textoSubidaNivel}>
+                  <span>¡Subiste de Nivel!</span>
+                  <strong>Nivel {modalVictoria.nuevoNivel}: {modalVictoria.nuevoNombreNivel}</strong>
+                </div>
+              </div>
+            )}
+
+            {/* Nuevas Insignias Desbloqueadas */}
+            {modalVictoria.nuevasInsignias && modalVictoria.nuevasInsignias.length > 0 && (
+              <div className={styles.bannerNuevasInsignias}>
+                <span className={styles.tituloNuevasInsignias}>¡Nuevas Insignias Desbloqueadas! 🎖️</span>
+                <div className={styles.gridInsigniasGanadas}>
+                  {modalVictoria.nuevasInsignias.map(insignia => (
+                    <div key={insignia.id} className={styles.chipInsigniaGanada}>
+                      <span className={styles.iconoInsigniaChip}>{insignia.icono}</span>
+                      <div>
+                        <strong>{insignia.nombre}</strong>
+                        <div><span>{insignia.descripcion}</span></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className={styles.accionesVictoria}>
               <button

@@ -3,6 +3,7 @@ import { Home, Layers, QrCode, Trophy, User, ShieldCheck, Sun, Moon, LogOut } fr
 import { useAuth } from '../features/auth/ProveedorAuth'
 import { useTema } from '../features/tema/ProveedorTema'
 import { AVATARES } from '../data/avatares'
+import LogoLudiktic from './LogoLudiktic'
 import styles from './BarraLateral.module.css'
 
 export default function BarraLateral() {
@@ -13,15 +14,9 @@ export default function BarraLateral() {
 
   return (
     <aside className={styles.sidebar} aria-label="Navegación de escritorio">
-      {/* Cabecera / Marca */}
-      <div className={styles.logoWrap}>
-        <div className={styles.logoIcono}>
-          <span>S</span>
-        </div>
-        <div>
-          <h2 className={styles.logoTexto}>STEAM</h2>
-          <span className={styles.logoSub}>Grado Octavo</span>
-        </div>
+      {/* Cabecera / Marca LUDIKTIC */}
+      <div style={{ padding: '4px 0 12px 0' }}>
+        <LogoLudiktic tamano="md" subtitulo="STEAM · GRADO 8°" />
       </div>
 
       {/* Tarjeta de usuario activa */}

@@ -1,0 +1,76 @@
+.contenedorLogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.iconoBadge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radio-md);
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.15) 0%, rgba(124, 58, 237, 0.25) 100%);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.25), inset 0 0 12px rgba(124, 58, 237, 0.2);
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+  flex-shrink: 0;
+}
+
+.contenedorLogo:hover .iconoBadge {
+  transform: scale(1.05);
+  box-shadow: 0 0 24px rgba(0, 210, 255, 0.45), inset 0 0 16px rgba(124, 58, 237, 0.35);
+}
+
+.svgQr {
+  display: block;
+}
+
+.textosLogo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nombreLudiktic {
+  font-family: var(--fuente-titulo);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #00D2FF 0%, #38BDF8 35%, #A855F7 70%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 24px rgba(0, 210, 255, 0.3);
+}
+
+.subtituloLogo {
+  font-family: var(--fuente-texto);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #38BDF8;
+  opacity: 0.85;
+}
+
+/* Tamaños */
+.sm .iconoBadge { width: 34px; height: 34px; }
+.sm .svgQr { width: 22px; height: 22px; }
+.sm .nombreLudiktic { font-size: 1.15rem; }
+.sm .subtituloLogo { font-size: 0.55rem; margin-top: 2px; }
+
+.md .iconoBadge { width: 44px; height: 44px; }
+.md .svgQr { width: 28px; height: 28px; }
+.md .nombreLudiktic { font-size: 1.5rem; }
+.md .subtituloLogo { font-size: 0.65rem; margin-top: 3px; }
+
+.lg .iconoBadge { width: 56px; height: 56px; }
+.lg .svgQr { width: 36px; height: 36px; }
+.lg .nombreLudiktic { font-size: 2.1rem; }
+.lg .subtituloLogo { font-size: 0.75rem; margin-top: 4px; }
+
+.xl .iconoBadge { width: 70px; height: 70px; }
+.xl .svgQr { width: 46px; height: 46px; }
+.xl .nombreLudiktic { font-size: 2.8rem; }
+.xl .subtituloLogo { font-size: 0.85rem; margin-top: 6px; }

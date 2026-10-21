@@ -4,6 +4,7 @@ import { useAuth } from '../features/auth/ProveedorAuth'
 import retosData from '../data/retos.json'
 import TarjetaReto from '../components/TarjetaReto'
 import PersonajeBit from '../components/PersonajeBit'
+import Escena3D from '../components/Escena3D'
 import { BookOpen, Atom, Terminal, QrCode, Filter, X } from 'lucide-react'
 import styles from './Areas.module.css'
 
@@ -73,18 +74,21 @@ export default function Areas() {
               key={area.id}
               type="button"
               onClick={() => setSearchParams({ area: area.id })}
-              className={`${styles.botonCarpeta} ${esActiva ? styles.carpetaActiva : ''}`}
-              style={{
-                borderColor: esActiva ? area.color : undefined,
-                background: esActiva ? `${area.color}20` : undefined
-              }}
+              className={`${styles.botonCarpeta} ${esActiva ? styles[`tab_${area.id}_activa`] : ''}`}
             >
-              <div className={styles.iconoCarpeta} style={{ color: area.colorClaro }}>
+              <div
+                className={styles.iconoCarpeta}
+                style={{ color: esActiva ? '#FFFFFF' : area.colorClaro }}
+              >
                 <Icono size={22} />
               </div>
               <div className={styles.textosCarpeta}>
-                <span className={styles.tituloCarpeta}>{area.nombre}</span>
-                <span className={styles.subCarpeta}>6 retos</span>
+                <span className={`${styles.tituloCarpeta} ${esActiva ? styles.tabActivaTexto : ''}`}>
+                  {area.nombre}
+                </span>
+                <span className={`${styles.subCarpeta} ${esActiva ? styles.tabActivaSubtexto : ''}`}>
+                  6 retos
+                </span>
               </div>
             </button>
           )
@@ -109,13 +113,20 @@ export default function Areas() {
           </div>
         </div>
 
-        <div className={styles.bitAreaWrap}>
-          <PersonajeBit
-            area={areaSeleccionada}
-            estado="reposo"
-            tamano="md"
-            mensaje={`¡Explora los problemas de ${areaActual.nombre} y pon a prueba tu código!`}
+        <div className={styles.ladoDerechoBanner}>
+          <Escena3D
+            key={areaSeleccionada}
+            modo={`carpeta-${areaSeleccionada}`}
+            className={styles.canvasArea3D}
           />
+          <div className={styles.bitAreaWrap}>
+            <PersonajeBit
+              area={areaSeleccionada}
+              estado="reposo"
+              tamano="md"
+              mensaje={`¡Explora los problemas de ${areaActual.nombre} y pon a prueba tu código!`}
+            />
+          </div>
         </div>
       </section>
 

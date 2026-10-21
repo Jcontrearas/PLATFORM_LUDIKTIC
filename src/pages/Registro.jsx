@@ -4,6 +4,8 @@ import { useAuth } from '../features/auth/ProveedorAuth'
 import { AVATARES } from '../data/avatares'
 import { validarNombreUsuario } from '../data/filtroPalabras'
 import PersonajeBit from '../components/PersonajeBit'
+import Escena3D from '../components/Escena3D'
+import LogoLudiktic from '../components/LogoLudiktic'
 import { UserPlus, ArrowLeft, Check, Sparkles } from 'lucide-react'
 import styles from './Registro.module.css'
 
@@ -65,6 +67,7 @@ export default function Registro() {
 
   return (
     <div className={styles.pantallaRegistro}>
+      <Escena3D modo="fondo-login" fondo={true} />
       <div className={styles.fondoGradiente} aria-hidden="true" />
 
       <div className={styles.tarjetaRegistro}>
@@ -87,8 +90,9 @@ export default function Registro() {
           />
         </div>
 
-        <div className={styles.encabezado}>
-          <h1 className={styles.titulo}>Crear tu cuenta</h1>
+        <div className={styles.encabezado} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+          <LogoLudiktic tamano="md" link={false} subtitulo="REGISTRO DE ESTUDIANTE" />
+          <h1 className={styles.titulo} style={{ fontSize: '1.4rem' }}>Crea tu cuenta</h1>
           <p className={styles.subtitulo}>Sin correos ni datos personales · Solo para tu curso</p>
         </div>
 

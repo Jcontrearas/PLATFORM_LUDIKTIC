@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../features/auth/ProveedorAuth'
 import PersonajeBit from '../components/PersonajeBit'
+import Escena3D from '../components/Escena3D'
+import LogoLudiktic from '../components/LogoLudiktic'
 import { LogIn, Sparkles, UserCheck, Shield } from 'lucide-react'
 import styles from './Login.module.css'
 
@@ -55,6 +57,7 @@ export default function Login() {
 
   return (
     <div className={styles.pantallaLogin}>
+      <Escena3D modo="fondo-login" fondo={true} />
       <div className={styles.fondoGradiente} aria-hidden="true" />
 
       <div className={styles.tarjetaLogin}>
@@ -68,11 +71,12 @@ export default function Login() {
           />
         </div>
 
-        {/* Encabezado */}
-        <div className={styles.encabezado}>
-          <div className={styles.logoBadge}>S</div>
-          <h1 className={styles.titulo}>Plataforma STEAM</h1>
-          <p className={styles.subtitulo}>Grado octavo · Matemáticas, Ciencias e Informática</p>
+        {/* Encabezado LUDIKTIC */}
+        <div className={styles.encabezado} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <LogoLudiktic tamano="lg" link={false} subtitulo="PLATAFORMA STEAM · GRADO 8°" />
+          <p className={styles.subtitulo} style={{ margin: 0 }}>
+            Resuelve retos con Python, escanea flashcards y compite en tiempo real
+          </p>
         </div>
 
         {/* Mensaje de error si ocurre */}

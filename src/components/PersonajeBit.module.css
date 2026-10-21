@@ -6,77 +6,129 @@
   user-select: none;
 }
 
+/* Tamaños de la mascota */
 .sm .svgRobot { width: 56px; height: 56px; }
-.md .svgRobot { width: 88px; height: 88px; }
-.lg .svgRobot { width: 130px; height: 130px; }
+.md .svgRobot { width: 92px; height: 92px; }
+.lg .svgRobot { width: 136px; height: 136px; }
+.xl .svgRobot { width: 180px; height: 180px; }
 
 .robotWrap {
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+  cursor: pointer;
 }
 
-/* Animación de respiración en reposo */
+.robotWrap:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* ================= ESTADOS DE ANIMACIÓN (Sección 12.3) ================= */
+
+/* 1. Reposo: respiración suave y parpadeo */
 .reposo {
-  animation: respiracion 3s ease-in-out infinite alternate;
+  animation: respiracion 3.2s ease-in-out infinite alternate;
 }
 
 @keyframes respiracion {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-4px); }
+  100% { transform: translateY(-5px); }
 }
 
-/* Animación de celebración */
-.celebrando {
-  animation: brinco 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite alternate;
-}
-
-@keyframes brinco {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-12px) scale(1.05); }
-}
-
-/* Pensando */
+/* 2. Pensando: ladeo reflexivo */
 .pensando {
-  animation: ladeo 1.5s ease-in-out infinite alternate;
+  animation: ladeoPensando 1.6s ease-in-out infinite alternate;
 }
 
-@keyframes ladeo {
-  0% { transform: rotate(-4deg); }
-  100% { transform: rotate(4deg); }
+@keyframes ladeoPensando {
+  0% { transform: rotate(-5deg) translateY(0); }
+  100% { transform: rotate(5deg) translateY(-3px); }
 }
 
-/* Parpadeo de ojos */
+/* 3. Celebrando: saltitos y entusiasmo */
+.celebrando {
+  animation: brincoCelebracion 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite alternate;
+}
+
+@keyframes brincoCelebracion {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-14px) scale(1.06); }
+}
+
+/* 4. Animando: suave balanceo de aliento */
+.animando {
+  animation: balanceoAliento 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes balanceoAliento {
+  0% { transform: rotate(-3deg) scale(0.98); }
+  100% { transform: rotate(3deg) scale(1.02); }
+}
+
+/* 5. Pista: brillo y pequeña vibración inspirada */
+.pista {
+  animation: chispaPista 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes chispaPista {
+  0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.5)); }
+  100% { transform: translateY(-6px) scale(1.05); filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.9)); }
+}
+
+/* Parpadeo de ojos natural */
 .ojos {
-  animation: parpadeo 4s infinite;
+  animation: parpadeo 3.8s infinite;
+  transform-origin: center;
 }
 
 @keyframes parpadeo {
-  0%, 96%, 100% { transform: scaleY(1); }
-  98% { transform: scaleY(0.1); }
+  0%, 95%, 100% { transform: scaleY(1); }
+  97.5% { transform: scaleY(0.1); }
 }
 
-/* Globo de diálogo narrador */
+/* Rotación de engranaje pensando */
+.engranajeGiro {
+  animation: girarEngranaje 3s linear infinite;
+  transform-origin: 60px 52px;
+}
+
+@keyframes girarEngranaje {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Onda musical flotante */
+.notaMusicalFlotante {
+  animation: flotarNota 2s ease-in-out infinite alternate;
+}
+
+@keyframes flotarNota {
+  0% { transform: translateY(0) rotate(-4deg); opacity: 0.7; }
+  100% { transform: translateY(-5px) rotate(6deg); opacity: 1; }
+}
+
+/* ================= GLOBO DE DIÁLOGO ================= */
 .globoDialogo {
   position: relative;
-  background: rgba(30, 41, 59, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radio-lg);
-  padding: var(--espacio-sm) var(--espacio-md);
-  margin-bottom: var(--espacio-sm);
-  max-width: 280px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: 8px 14px;
+  margin-bottom: 10px;
+  max-width: 300px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   text-align: center;
   z-index: 10;
-  animation: flotarGlobo 0.4s ease-out;
+  animation: aparecerGlobo 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .globoDialogo p {
   color: #F8FAFC;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.35;
   margin: 0;
 }
 
@@ -89,10 +141,10 @@
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid rgba(30, 41, 59, 0.95);
+  border-top: 6px solid rgba(15, 23, 42, 0.92);
 }
 
-@keyframes flotarGlobo {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes aparecerGlobo {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }

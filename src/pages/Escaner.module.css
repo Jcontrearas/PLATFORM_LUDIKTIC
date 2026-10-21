@@ -82,12 +82,17 @@
 }
 
 .elementoCamara {
+  position: absolute;
+  inset: 0;
   width: 100% !important;
   height: 100% !important;
   border: none !important;
+  z-index: 1;
 }
 
 .elementoCamara video {
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover !important;
   border-radius: var(--radio-xl);
 }
@@ -131,6 +136,8 @@
 
 /* Placeholder cuando la cámara no está activa */
 .placeholderCamara {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,6 +146,7 @@
   gap: var(--espacio-md);
   padding: var(--espacio-lg);
   color: var(--color-texto-suave);
+  z-index: 2;
 }
 
 .iconoCamaraGrande {

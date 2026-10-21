@@ -12,26 +12,58 @@
 }
 
 .botonCarpeta {
-  background: var(--color-fondo-card);
-  border: 1px solid var(--color-borde);
+  background: rgba(13, 24, 48, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radio-lg);
-  padding: var(--espacio-sm) var(--espacio-md);
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   gap: var(--espacio-sm);
   cursor: pointer;
-  transition: all var(--transicion-rapida);
+  transition: all var(--transicion);
   text-align: left;
+  position: relative;
+  overflow: hidden;
 }
 
 .botonCarpeta:hover {
-  background: var(--color-fondo-card-hover);
+  background: rgba(20, 36, 72, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
 }
 
-.carpetaActiva {
-  border-width: 2px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+/* Pestaña activa por área con gradiente vibrante representativo */
+.tab_matematicas_activa {
+  background: linear-gradient(135deg, #0284C7 0%, #00D2FF 100%) !important;
+  border-color: #00D2FF !important;
+  box-shadow: 0 0 24px rgba(0, 210, 255, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+.tab_ciencias_activa {
+  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #00F5A0 100%) !important;
+  border-color: #00F5A0 !important;
+  box-shadow: 0 0 24px rgba(0, 245, 160, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+.tab_informatica_activa {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #EC4899 100%) !important;
+  border-color: #EC4899 !important;
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+.tabActivaTexto {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tabActivaSubtexto {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600;
 }
 
 .iconoCarpeta {
@@ -147,22 +179,42 @@
   transition: width 0.5s ease;
 }
 
+.ladoDerechoBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-md);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.canvasArea3D {
+  width: 110px !important;
+  height: 110px !important;
+  min-height: 110px;
+}
+
 .bitAreaWrap {
   flex-shrink: 0;
 }
 
-/* Temas del banner según el área */
+/* Temas del banner según el área con gradientes vibrantes y resplandores neón */
 .banner_matematicas {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(15, 23, 42, 0.8) 100%);
-  border-color: rgba(37, 99, 235, 0.35);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.35) 0%, rgba(0, 210, 255, 0.2) 45%, rgba(6, 11, 24, 0.9) 100%);
+  border: 1px solid rgba(0, 210, 255, 0.45);
+  box-shadow: 0 12px 40px rgba(0, 210, 255, 0.2);
 }
+
 .banner_ciencias {
-  background: linear-gradient(135deg, rgba(5, 150, 105, 0.2) 0%, rgba(15, 23, 42, 0.8) 100%);
-  border-color: rgba(5, 150, 105, 0.35);
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.35) 0%, rgba(0, 245, 160, 0.2) 45%, rgba(6, 11, 24, 0.9) 100%);
+  border: 1px solid rgba(0, 245, 160, 0.45);
+  box-shadow: 0 12px 40px rgba(0, 245, 160, 0.2);
 }
+
 .banner_informatica {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(15, 23, 42, 0.8) 100%);
-  border-color: rgba(124, 58, 237, 0.35);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35) 0%, rgba(236, 72, 153, 0.2) 45%, rgba(6, 11, 24, 0.9) 100%);
+  border: 1px solid rgba(236, 72, 153, 0.45);
+  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.2);
 }
 
 /* Barra de Filtros */
